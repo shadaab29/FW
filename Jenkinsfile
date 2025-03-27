@@ -4,7 +4,13 @@ pipeline {
     stages {
         stage('Checkout Code') {
             steps {
-                git 'https://github.com/shadaab29/fashion_website.git' // Replace with your repository URL
+                checkout([$class: 'GitSCM',
+                    branches: [[name: '*/main']],
+                    userRemoteConfigs: [[
+                        url: 'https://github.com/shadaab29/fashion_website.git',
+                        credentialsId: 'demo1' // Your Jenkins credentials ID
+                    ]]
+                ])
             }
         }
 
