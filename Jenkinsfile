@@ -22,10 +22,13 @@ pipeline {
 
         stage('Stop & Remove Old Container') {
             steps {
-                bat '''
-                docker stop static-website || true
-                docker rm static-website || true
-                '''
+                script {
+                    def containerExists = bat(script: 'docker ps -q --filter "name=static-website"', returnStdout: true).trim()
+                    if (containerExists) {
+                        bat 'docker stop static-website'
+                        bat 'docker rm static-website'
+                    }
+                }
             }
         }
 
