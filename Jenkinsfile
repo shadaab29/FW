@@ -16,13 +16,13 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t static-website .'
+                bat 'docker build -t static-website .'
             }
         }
 
         stage('Stop & Remove Old Container') {
             steps {
-                sh '''
+                bat '''
                 docker stop static-website || true
                 docker rm static-website || true
                 '''
@@ -31,7 +31,7 @@ pipeline {
 
         stage('Run New Container') {
             steps {
-                sh 'docker run -d -p 80:80 --name static-website static-website'
+                bat 'docker run -d -p 80:80 --name static-website static-website'
             }
         }
     }
