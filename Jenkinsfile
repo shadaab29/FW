@@ -8,7 +8,6 @@ pipeline {
                     branches: [[name: '*/main']],
                     userRemoteConfigs: [[
                         url: 'https://github.com/shadaab29/fashion_website.git',
-                        credentialsId: 'demo1' // Jenkins credentials ID
                     ]]
                 ])
             }
