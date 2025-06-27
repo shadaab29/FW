@@ -7,7 +7,7 @@ pipeline {
                 checkout([$class: 'GitSCM',
                     branches: [[name: '*/main']],
                     userRemoteConfigs: [[
-                        url: 'https://github.com/batadaab29/fabation_website.git',
+                        url: 'https://github.com/shadaab29/fashion_website.git',
                         credentialsId: 'demo1' // Make sure this exists
                     ]]
                 ])
