@@ -1,4 +1,4 @@
-pipeline { actions
+pipeline {
     agent any
 
     stages {
@@ -8,7 +8,7 @@ pipeline { actions
                     branches: [[name: '*/main']],
                     userRemoteConfigs: [[
                         url: 'https://github.com/shadaab29/fashion_website.git',
-                        credentialsId: 'demo1' // Make sure this exists
+                        credentialsId: 'demo1' // Jenkins credentials ID
                     ]]
                 ])
             }
@@ -34,7 +34,7 @@ pipeline { actions
 
         stage('Run New Container') {
             steps {
-                sh 'docker run -d -p 8081:80 --name static-website static-website'
+                sh 'docker run -d -p 80:80 --name static-website static-website'
             }
         }
     }
