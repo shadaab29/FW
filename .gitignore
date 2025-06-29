@@ -3,3 +3,5 @@ Dockerfile
 Jenkinsfile
 README.md
 *.md
+github-action-key
+github-action-key.pub
